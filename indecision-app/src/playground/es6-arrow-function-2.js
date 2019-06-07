@@ -1,18 +1,23 @@
-
 const add = (a, b) => {
+    // console.log(arguments);
     return a + b;
 };
 
-console.log(add(55, 1060));
+console.log(add(45, 12));
 
 const user = {
-    name: 'Andrew',
-    cities: ['London', 'Melbourne', 'Brighton']
-};
+    name: 'Chris',
+    cities: ['London', 'Melbourne', 'Vancouver'],
+    printPlacesLived() {
+        return this.cities.map((city) => this.name + ' has lived in ' + city);
+    }
+}
+
+console.log(user.printPlacesLived());
 
 const multiplier = {
-    numbers: ['67', '32', '21'],
-    multiplyBy: '43',
+    numbers: ['10', '20', '30'],
+    multiplyBy: '3',
     multiply() {
         return this.numbers.map((number) => number * this.multiplyBy);
     }
