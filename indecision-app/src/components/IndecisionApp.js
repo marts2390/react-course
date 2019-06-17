@@ -11,7 +11,7 @@ class IndecisionApp extends React.Component {
         selectedOption: undefined
     }
     clearSelectedOptionState = () => {
-        this.setState(() => ({ selectedOption: undefined}))
+        this.setState(() => ({ selectedOption: undefined }))
     }
     handleDeleteOptions = () => {
         this.setState(() => ({ options: [] }));
@@ -24,7 +24,6 @@ class IndecisionApp extends React.Component {
     handlePick = () => {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
-        console.log(this.state)
         this.setState(() => ({
             selectedOption: option
         }));
@@ -61,21 +60,25 @@ class IndecisionApp extends React.Component {
         return (
             <div>
                 <Header subTitle={subTitle} />
-                <Action
-                    handlePick={this.handlePick}
-                    hasOptions={this.state.options.length > 0}
-                />
-                <Options
-                    options={this.state.options}
-                    handleDeleteOptions={this.handleDeleteOptions}
-                    handleDeleteOption={this.handleDeleteOption}
-                />
-                <AddOption
-                    handleAddOption={this.handleAddOption}
-                />
-                <OptionModal 
-                selectedOption={this.state.selectedOption} 
-                clearSelectedOptionState={this.clearSelectedOptionState}
+                <div className='container'>
+                    <Action
+                        handlePick={this.handlePick}
+                        hasOptions={this.state.options.length > 0}
+                    />
+                    <div className='widget'>
+                        <Options
+                            options={this.state.options}
+                            handleDeleteOptions={this.handleDeleteOptions}
+                            handleDeleteOption={this.handleDeleteOption}
+                        />
+                        <AddOption
+                            handleAddOption={this.handleAddOption}
+                        />
+                    </div>
+                </div>
+                <OptionModal
+                    selectedOption={this.state.selectedOption}
+                    clearSelectedOptionState={this.clearSelectedOptionState}
                 />
             </div>
         )
